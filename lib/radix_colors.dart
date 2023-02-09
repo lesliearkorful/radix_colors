@@ -13,11 +13,11 @@
 library radix_colors;
 
 import 'package:flutter/material.dart';
-import 'package:radix_colors/src/radix_colors_dark.dart';
 
-import 'src/radix_colors_base.dart';
-import 'src/radix_colors_light.dart';
 import 'src/radix_color.dart';
+import 'src/radix_colors_base.dart';
+import 'src/radix_colors_dark.dart';
+import 'src/radix_colors_light.dart';
 
 export 'src/radix_color.dart';
 
