@@ -28,3 +28,7 @@ migrate_working_dir/
 .dart_tool/
 .packages
 build/
+android/local.properties
+*.xcconfig
+ios/Flutter/flutter_export_environment.sh
+macos/Flutter/ephemeral/flutter_export_environment.sh
