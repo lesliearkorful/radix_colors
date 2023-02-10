@@ -8,185 +8,228 @@
 ///
 /// ### Automatic dark mode
 ///
-/// Get the theme specific color by just by passing the [BuildContext] to [RadixColors.dynamic]™.
+/// Get the theme specific color by just by passing the [BuildContext] to [RadixColorsDynamic].
+///
+/// ------
+///
+/// ### Radix Colors provides 15 color scales, designed for white foreground text at step 9
+/// There are 12 steps in each scale. Each step was designed for at least one specific use case.
+///
+/// 1 =  App background
+///
+/// 2 = Subtle background
+///
+/// 3 = UI element background
+///
+/// 4 = Hovered UI element background
+///
+/// 5 = Active / Selected UI element background
+///
+/// 6 = Subtle borders and separators
+///
+/// 7 = UI element border and focus rings
+///
+/// 8 = Hovered UI element border
+///
+/// 9 = Solid backgrounds
+///
+/// 10 = Hovered solid backgrounds
+///
+/// 11 = Low-contrast text
+///
+/// 12 = High-contrast text
 
 library radix_colors;
 
 import 'package:flutter/material.dart';
+import 'package:radix_colors/src/radix_color_scales.dart';
 
 import 'src/radix_color.dart';
-import 'src/radix_colors_base.dart';
 import 'src/radix_colors_dark.dart';
-import 'src/radix_colors_light.dart';
 
 export 'src/radix_color.dart';
+export 'src/radix_colors_dynamic.dart';
 
 class RadixColors {
   RadixColors._();
 
-  /// Dark mode colors
-  static final RadixColorScales dark = RadixColorsDark();
+  /// Dark colors
+  static const RadixColorsDark dark = RadixColorsDark();
 
-  /// Pass the [BuildContext] to current the theme specific color
-  static RadixColorScales dynamic(
-    BuildContext context, {
-    Brightness? brightness,
-  }) {
-    final theme = Theme.of(context);
-    return (brightness ?? theme.brightness) == Brightness.dark
-        ? RadixColorsDark()
-        : RadixColorsLight();
-  }
+  static const RadixColor amber = amberScale;
 
-  static final RadixColorScales _color = RadixColorsLight();
+  static const RadixColor amberA = amberAScale;
 
-  static RadixColor get amber => _color.amber;
-  static RadixColor get amberA => _color.amberA;
-  static RadixColor get blue => _color.blue;
-  static RadixColor get blueA => _color.blueA;
-  static RadixColor get bronze => _color.bronze;
-  static RadixColor get bronzeA => _color.bronzeA;
-  static RadixColor get brown => _color.brown;
-  static RadixColor get brownA => _color.brownA;
-  static RadixColor get crimson => _color.crimson;
-  static RadixColor get crimsonA => _color.crimsonA;
-  static RadixColor get cyan => _color.cyan;
-  static RadixColor get cyanA => _color.cyanA;
-  static RadixColor get gold => _color.gold;
-  static RadixColor get goldA => _color.goldA;
-  static RadixColor get grass => _color.grass;
-  static RadixColor get grassA => _color.grassA;
-  static RadixColor get gray => _color.gray;
-  static RadixColor get grayA => _color.grayA;
-  static RadixColor get green => _color.green;
-  static RadixColor get greenA => _color.greenA;
-  static RadixColor get indigo => _color.indigo;
-  static RadixColor get indigoA => _color.indigoA;
-  static RadixColor get lime => _color.lime;
-  static RadixColor get limeA => _color.limeA;
-  static RadixColor get mauve => _color.mauve;
-  static RadixColor get mauveA => _color.mauveA;
-  static RadixColor get mint => _color.mint;
-  static RadixColor get mintA => _color.mintA;
-  static RadixColor get olive => _color.olive;
-  static RadixColor get oliveA => _color.oliveA;
-  static RadixColor get orange => _color.orange;
-  static RadixColor get orangeA => _color.orangeA;
-  static RadixColor get pink => _color.pink;
-  static RadixColor get pinkA => _color.pinkA;
-  static RadixColor get plum => _color.plum;
-  static RadixColor get plumA => _color.plumA;
-  static RadixColor get purple => _color.purple;
-  static RadixColor get purpleA => _color.purpleA;
-  static RadixColor get red => _color.red;
-  static RadixColor get redA => _color.redA;
-  static RadixColor get sage => _color.sage;
-  static RadixColor get sageA => _color.sageA;
-  static RadixColor get sand => _color.sand;
-  static RadixColor get sandA => _color.sandA;
-  static RadixColor get sky => _color.sky;
-  static RadixColor get skyA => _color.skyA;
-  static RadixColor get slate => _color.slate;
-  static RadixColor get slateA => _color.slateA;
-  static RadixColor get teal => _color.teal;
-  static RadixColor get tealA => _color.tealA;
-  static RadixColor get tomato => _color.tomato;
-  static RadixColor get tomatoA => _color.tomatoA;
-  static RadixColor get violet => _color.violet;
-  static RadixColor get violetA => _color.violetA;
-  static RadixColor get yellow => _color.yellow;
-  static RadixColor get yellowA => _color.yellowA;
+  static const RadixColor blackA = blackAScale;
+
+  static const RadixColor blue = blueScale;
+
+  static const RadixColor blueA = blueAScale;
+
+  static const RadixColor bronze = bronzeScale;
+
+  static const RadixColor bronzeA = bronzeAScale;
+
+  static const RadixColor brown = brownScale;
+
+  static const RadixColor brownA = brownAScale;
+
+  static const RadixColor crimson = crimsonScale;
+
+  static const RadixColor crimsonA = crimsonAScale;
+
+  static const RadixColor cyan = cyanScale;
+
+  static const RadixColor cyanA = cyanAScale;
+
+  static const RadixColor gold = goldScale;
+
+  static const RadixColor goldA = goldAScale;
+
+  static const RadixColor grass = grassScale;
+
+  static const RadixColor grassA = grassAScale;
+
+  static const RadixColor gray = grayScale;
+
+  static const RadixColor grayA = grayAScale;
+
+  static const RadixColor green = greenScale;
+
+  static const RadixColor greenA = greenAScale;
+
+  static const RadixColor indigo = indigoScale;
+
+  static const RadixColor indigoA = indigoAScale;
+
+  static const RadixColor lime = limeScale;
+
+  static const RadixColor limeA = limeAScale;
+
+  static const RadixColor mauve = mauveScale;
+
+  static const RadixColor mauveA = mauveAScale;
+
+  static const RadixColor mint = mintScale;
+
+  static const RadixColor mintA = mintAScale;
+
+  static const RadixColor olive = oliveScale;
+
+  static const RadixColor oliveA = oliveAScale;
+
+  static const RadixColor orange = orangeScale;
+
+  static const RadixColor orangeA = orangeAScale;
+
+  static const RadixColor pink = pinkScale;
+
+  static const RadixColor pinkA = pinkAScale;
+
+  static const RadixColor plum = plumScale;
+
+  static const RadixColor plumA = plumAScale;
+
+  static const RadixColor purple = purpleScale;
+
+  static const RadixColor purpleA = purpleAScale;
+
+  static const RadixColor red = redScale;
+
+  static const RadixColor redA = redAScale;
+
+  static const RadixColor sage = sageScale;
+
+  static const RadixColor sageA = sageAScale;
+
+  static const RadixColor sand = sandScale;
+
+  static const RadixColor sandA = sandAScale;
+
+  static const RadixColor sky = skyScale;
+
+  static const RadixColor skyA = skyAScale;
+
+  static const RadixColor slate = slateScale;
+
+  static const RadixColor slateA = slateAScale;
+
+  static const RadixColor teal = tealScale;
+
+  static const RadixColor tealA = tealAScale;
+
+  static const RadixColor tomato = tomatoScale;
+
+  static const RadixColor tomatoA = tomatoAScale;
+
+  static const RadixColor violet = violetScale;
+
+  static const RadixColor violetA = violetAScale;
+
+  static const RadixColor whiteA = whiteAScale;
+
+  static const RadixColor yellow = yellowScale;
+
+  static const RadixColor yellowA = yellowAScale;
 
   static Color transparent = Colors.transparent;
 
-  static final RadixColor white = RadixColor(
-      const Color.fromARGB(98, 255, 255, 255).value, const <int, Color>{
-    1: Color.fromARGB(0, 255, 255, 255),
-    2: Color.fromARGB(3, 255, 255, 255),
-    3: Color.fromARGB(9, 255, 255, 255),
-    4: Color.fromARGB(14, 255, 255, 255),
-    5: Color.fromARGB(22, 255, 255, 255),
-    6: Color.fromARGB(32, 255, 255, 255),
-    7: Color.fromARGB(45, 255, 255, 255),
-    8: Color.fromARGB(63, 255, 255, 255),
-    9: Color.fromARGB(98, 255, 255, 255),
-    10: Color.fromARGB(114, 255, 255, 255),
-    11: Color.fromARGB(151, 255, 255, 255),
-    12: Color.fromARGB(235, 255, 255, 255)
-  });
-
-  static final RadixColor black =
-      RadixColor(const Color.fromARGB(112, 0, 0, 0).value, const <int, Color>{
-    1: Color.fromARGB(3, 0, 0, 0),
-    2: Color.fromARGB(7, 0, 0, 0),
-    3: Color.fromARGB(12, 0, 0, 0),
-    4: Color.fromARGB(18, 0, 0, 0),
-    5: Color.fromARGB(23, 0, 0, 0),
-    6: Color.fromARGB(29, 0, 0, 0),
-    7: Color.fromARGB(36, 0, 0, 0),
-    8: Color.fromARGB(56, 0, 0, 0),
-    9: Color.fromARGB(112, 0, 0, 0),
-    10: Color.fromARGB(122, 0, 0, 0),
-    11: Color.fromARGB(144, 0, 0, 0),
-    12: Color.fromARGB(232, 0, 0, 0)
-  });
-
   static List<RadixColor> get primaries => [
-        amber,
-        amberA,
-        blue,
-        blueA,
-        bronze,
-        bronzeA,
-        brown,
-        brownA,
-        crimson,
-        crimsonA,
-        cyan,
-        cyanA,
-        gold,
-        goldA,
-        grass,
-        grassA,
         gray,
-        grayA,
-        green,
-        greenA,
-        indigo,
-        indigoA,
-        lime,
-        limeA,
         mauve,
-        mauveA,
-        mint,
-        mintA,
-        olive,
-        oliveA,
-        orange,
-        orangeA,
-        pink,
-        pinkA,
-        plum,
-        plumA,
-        purple,
-        purpleA,
-        red,
-        redA,
-        sage,
-        sageA,
-        sand,
-        sandA,
-        sky,
-        skyA,
         slate,
-        slateA,
-        teal,
-        tealA,
+        sage,
+        olive,
+        sand,
         tomato,
-        tomatoA,
+        red,
+        crimson,
+        pink,
+        plum,
+        purple,
         violet,
-        violetA,
+        indigo,
+        blue,
+        cyan,
+        teal,
+        green,
+        grass,
+        brown,
+        orange,
+        sky,
+        mint,
+        lime,
         yellow,
+        amber,
+        gold,
+        brown,
+        grayA,
+        mauveA,
+        slateA,
+        sageA,
+        oliveA,
+        sandA,
+        tomatoA,
+        redA,
+        crimsonA,
+        pinkA,
+        plumA,
+        purpleA,
+        violetA,
+        indigoA,
+        blueA,
+        cyanA,
+        tealA,
+        greenA,
+        grassA,
+        brownA,
+        orangeA,
+        skyA,
+        mintA,
+        limeA,
         yellowA,
+        amberA,
+        goldA,
+        brownA,
       ];
 }

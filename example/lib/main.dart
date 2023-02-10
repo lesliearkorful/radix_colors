@@ -3,123 +3,209 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:radix_colors/radix_colors.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Brightness brightness = Brightness.light;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Radix Colors Demo',
       theme: ThemeData(
-        brightness: Brightness.light,
+        brightness: brightness,
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Radix Colors'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  RadixColor currentColor = RadixColors.red;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
-        title: Text(widget.title, style: const TextStyle(fontSize: 16)),
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 14),
-        child: Align(
-          alignment: Alignment.topCenter,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "The Scale",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w600,
-                    color: RadixColors.gray.step12,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  "An overview of all 30 Radix Colors scales.\nWhite and black are excluded from this demo",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w300,
-                    color: RadixColors.gray.step10,
-                  ),
-                ),
-                const SizedBox(height: 40),
-                Text(
-                  "Colors",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: RadixColors.gray.step12,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  "Radix Colors provides 15 color scales, designed for white foreground text at step 9.",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                    color: RadixColors.gray.step10,
-                  ),
-                ),
-                const SizedBox(height: 60),
-                ...colorMap().map((color) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        color.name,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
+      home: Builder(builder: (context) {
+        return Scaffold(
+          backgroundColor: RadixColorsDynamic(context).gray.step1,
+          appBar: AppBar(
+            elevation: 0,
+            backgroundColor: RadixColorsDynamic(context).gray.step1,
+            foregroundColor: RadixColorsDynamic(context).gray.step12,
+            systemOverlayStyle: SystemUiOverlayStyle.dark,
+            title: const Text(
+              'Flutter Radix Colors',
+              style: TextStyle(fontSize: 16),
+            ),
+            leading: IconButton(
+              onPressed: () {
+                setState(() {
+                  if (brightness == Brightness.dark) {
+                    brightness = Brightness.light;
+                  } else {
+                    brightness = Brightness.dark;
+                  }
+                });
+              },
+              icon: Icon(
+                brightness == Brightness.dark
+                    ? Icons.sunny
+                    : Icons.nightlight_outlined,
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  launchUrlString("https://pub.dev/packages/radix_colors");
+                },
+                child: const Text("View on pub.dev"),
+              ),
+            ],
+          ),
+          body: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 14),
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 840),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text(
+                          "A gorgeous, accessible color system",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 28,
+                            letterSpacing: -1,
+                            fontWeight: FontWeight.w600,
+                            color: RadixColorsDynamic(context).gray.step12,
+                          ),
                         ),
+                        const SizedBox(height: 12),
+                        Text(
+                          "An open-source color system for designing beautiful, accessible websites and apps.",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: RadixColorsDynamic(context).gray.step11,
+                          ),
+                        ),
+                        const SizedBox(height: 40),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            OutlinedButton(
+                              onPressed: () {
+                                launchUrlString(
+                                  "https://pub.dev/documentation/radix_colors/latest/",
+                                );
+                              },
+                              child: const Text("API Documentation"),
+                            ),
+                            const SizedBox(width: 16),
+                            OutlinedButton(
+                              onPressed: () {
+                                launchUrlString(
+                                  "https://www.radix-ui.com/colors",
+                                );
+                              },
+                              child: const Text("Radix Documentation"),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 80),
+                    colorSteps(),
+                    const SizedBox(height: 6),
+                    ...RadixColorsDynamic(context)
+                        .primaries
+                        .take(28)
+                        .map((color) {
+                      return colorBlock(
+                          "${color.name?.substring(0, 1).toUpperCase()}${color.name?.substring(1, color.name?.length)}",
+                          color);
+                    }).toList(),
+                    const SizedBox(height: 80),
+                    Text(
+                      "The Scale",
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600,
+                        color: RadixColorsDynamic(context).gray.step12,
                       ),
-                      const SizedBox(height: 16),
-                      colorSteps(),
-                      colorBlock(color.name.toLowerCase(), color.primary),
-                      colorBlock("${color.name.toLowerCase()}A", color.accent),
-                      colorBlock(
-                        "${color.name.toLowerCase()}Dark",
-                        color.primaryDark,
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      "An overview of all 30 Radix Colors scales.\nWhite and black are excluded from this demo",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w300,
+                        color: RadixColorsDynamic(context).gray.step10,
                       ),
-                      colorBlock(
-                        "${color.name.toLowerCase()}DarkA",
-                        color.accentDark,
-                        bg: color.primary.step12,
+                    ),
+                    const SizedBox(height: 40),
+                    Text(
+                      "Colors",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: RadixColorsDynamic(context).gray.step12,
                       ),
-                      const SizedBox(height: 56),
-                    ],
-                  );
-                }),
-              ],
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      "Radix Colors provides 15 color scales, designed for white foreground text at step 9."
+                      "\nThe RadixColorsDynamic class returns the matching color scale for the current Theme.brightness",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w300,
+                        color: RadixColorsDynamic(context).gray.step10,
+                      ),
+                    ),
+                    const SizedBox(height: 60),
+                    ...colorMap().map((color) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            color.name,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          colorSteps(),
+                          colorBlock(color.name.toLowerCase(), color.primary),
+                          colorBlock(
+                              "${color.name.toLowerCase()}A", color.accent),
+                          colorBlock(
+                            "${color.name.toLowerCase()}Dark",
+                            color.primaryDark,
+                          ),
+                          colorBlock(
+                            "${color.name.toLowerCase()}DarkA",
+                            color.accentDark,
+                            bg: color.primaryDark.step1,
+                          ),
+                          const SizedBox(height: 56),
+                        ],
+                      );
+                    }),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 
@@ -182,7 +268,7 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.only(bottom: 4),
               child: Text(
                 "${index + 1}",
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w300,
                   color: RadixColors.gray,

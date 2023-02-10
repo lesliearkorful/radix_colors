@@ -1,7 +1,8 @@
-## 1.0.1
+## 1.0.3
 
-- Minor fixes
+- Refactored the library to use const colors
+- Added RadixColorsDynamic class
 
-## 1.0.0
+## 0.0.1
 
 - Initial release with all 30 Radix Colors scales.

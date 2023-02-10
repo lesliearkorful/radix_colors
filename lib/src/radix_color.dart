@@ -27,7 +27,7 @@ class RadixColor extends ColorSwatch<int> {
   /// 11 = Low-contrast text
   ///
   /// 12 = High-contrast text
-  const RadixColor(super.primary, super.swatch);
+  const RadixColor(super.primary, super.swatch, {this.name});
 
   /// For app backgrounds and subtle component backgrounds.
   ///
@@ -164,4 +164,7 @@ class RadixColor extends ColorSwatch<int> {
 
   /// Step 12 is designed for high-contrast text.
   Color get step12 => this[12]!;
+
+  /// Name of color scale
+  final String? name;
 }

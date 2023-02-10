@@ -15,8 +15,9 @@ and the Flutter guide for
 
 A gorgeous, accessible color system
 An open-source color system for designing beautiful, accessible websites and apps.
-
 A dart library for <a href="https://www.radix-ui.com/colors" target="_blank">Radix Colors</a>
+
+View the <a href="https://lesliearkorful.github.io/radix_colors_demo.github.io" target="_blank">Flutter web demo</a>
 
 ## Installation
 
@@ -24,7 +25,7 @@ Add the Radix Colors package to pubspec.yaml
 
 ```yaml
 dependencies:
-  radix_colors: ^1.0.0
+  radix_colors: ^1.0.3
 ```
 
 Import the package in your dart file
@@ -52,7 +53,7 @@ RadixColors.dark.amber;
 ### Dynamic color for auto light/dark theme
 
 ```dart
-RadixColors.dynamic(context).amber;
+RadixColorsDynamic(context).amber;
 ```
 
 ### 12 Colors steps/shades
@@ -147,9 +148,7 @@ Most step 9 colors are designed for white foreground text. `RadixColors.sky`, `R
 - Step `11` is designed for low-contrast text.
 - Step `12` is designed for high-contrast text.
 
-```
-A major part of this documentation was lifted from the Radix Colors website.
-```
+_A major part of this documentation was lifted from the Radix Colors website._
 
 ### Found an issue or have a suggestion?
 

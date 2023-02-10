@@ -1,11 +1,12 @@
 name: radix_colors
 description: Radix Colors for Flutter. An open-source color system for designing beautiful, accessible websites and apps.
-version: 1.0.1
-homepage: https://github.com/lesliearkorful/radix_colors
+version: 1.0.3
+homepage: https://lesliearkorful.github.io/radix_colors_demo.github.io
+repository: https://github.com/lesliearkorful/radix_colors
 
 environment:
-  sdk: ">=2.19.2 <3.0.0"
-  flutter: ">=1.17.0"
+  sdk: ">=2.19.0 <3.0.0"
+  flutter: ">=3.3.0"
 
 dependencies:
   flutter:
