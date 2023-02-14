@@ -172,7 +172,7 @@ class RadixColors {
 
   static const RadixColor yellowA = yellowAScale;
 
-  static Color transparent = Colors.transparent;
+  static const Color transparent = Colors.transparent;
 
   static List<RadixColor> get primaries => [
         gray,

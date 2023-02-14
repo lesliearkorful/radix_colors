@@ -3,7 +3,7 @@ import 'package:flutter/painting.dart';
 import 'radix_color.dart';
 
 const amberScale = RadixColor(
-  0xffffb224,
+  0xffee9d2b,
   <int, Color>{
     1: Color(0xfffefdfb),
     2: Color(0xfffff9ed),
@@ -22,7 +22,7 @@ const amberScale = RadixColor(
 );
 
 const amberAScale = RadixColor(
-  0xdbffa600,
+  0xd4ea8900,
   <int, Color>{
     1: Color(0x04c08205),
     2: Color(0x12ffab02),
@@ -79,7 +79,7 @@ const amberDarkAScale = RadixColor(
 );
 
 const blackAScale = RadixColor(
-  0x70000000,
+  0xe8000000,
   <int, Color>{
     1: Color(0x03000000),
     2: Color(0x07000000),
@@ -858,7 +858,7 @@ const indigoDarkAScale = RadixColor(
 );
 
 const limeScale = RadixColor(
-  0xff99d52a,
+  0xff94ba2c,
   <int, Color>{
     1: Color(0xfffcfdfa),
     2: Color(0xfff7fcf0),
@@ -877,7 +877,7 @@ const limeScale = RadixColor(
 );
 
 const limeAScale = RadixColor(
-  0xd585cd00,
+  0xd37eac00,
   <int, Color>{
     1: Color(0x05699b05),
     2: Color(0x0f77cc01),
@@ -1010,7 +1010,7 @@ const mauveDarkAScale = RadixColor(
 );
 
 const mintScale = RadixColor(
-  0xff70e1c8,
+  0xff40c4aa,
   <int, Color>{
     1: Color(0xfff9fefd),
     2: Color(0xffeffefa),
@@ -1029,7 +1029,7 @@ const mintScale = RadixColor(
 );
 
 const mintAScale = RadixColor(
-  0x8f00c99e,
+  0xbf00b08d,
   <int, Color>{
     1: Color(0x0605d5ac),
     2: Color(0x1001efb0),
@@ -1694,7 +1694,7 @@ const sandDarkAScale = RadixColor(
 );
 
 const skyScale = RadixColor(
-  0xff68ddfd,
+  0xff2ebde5,
   <int, Color>{
     1: Color(0xfff9feff),
     2: Color(0xfff1fcff),
@@ -1713,7 +1713,7 @@ const skyScale = RadixColor(
 );
 
 const skyAScale = RadixColor(
-  0x9700c5fc,
+  0xd100afdf,
   <int, Color>{
     1: Color(0x0605d5ff),
     2: Color(0x0e01c8ff),
@@ -2074,7 +2074,7 @@ const violetDarkAScale = RadixColor(
 );
 
 const whiteAScale = RadixColor(
-  0x62ffffff,
+  0xebffffff,
   <int, Color>{
     1: Color(0x00ffffff),
     2: Color(0x03ffffff),
@@ -2093,7 +2093,7 @@ const whiteAScale = RadixColor(
 );
 
 const yellowScale = RadixColor(
-  0xfff5d90a,
+  0xffebbc00,
   <int, Color>{
     1: Color(0xfffdfdf9),
     2: Color(0xfffffce8),
@@ -2112,7 +2112,7 @@ const yellowScale = RadixColor(
 );
 
 const yellowAScale = RadixColor(
-  0xf5f5d800,
+  0xfaebbc00,
   <int, Color>{
     1: Color(0x06abab05),
     2: Color(0x17ffdd02),
